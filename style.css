@@ -1,0 +1,171 @@
+body {
+    /* background-color: #191919; */
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.text {
+    color: #fff;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.space-text {
+    font-family: "Space Grotesk", sans-serif;
+    font-weight: 400;
+}
+
+.big-shoulders-text {
+    font-family: "Big Shoulders", sans-serif;
+}
+
+.section-title {
+    font-weight: 700;
+    font-size: 72px;
+}
+
+.navbar {
+    width: 100%;
+    position: fixed;
+    z-index: 99;
+}
+
+
+.section1 {
+    height: 100vh;
+    background: rgb(25,25,25);
+}
+
+.bg-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    z-index: 2;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(25,25,25,1) 5%, rgba(255, 255, 255, 0) 100%);
+    z-index: 1;
+}
+
+.slide-1 {
+    background-image: url(./assets/section1/imgs/go-kart.jpg);
+}
+
+.slide-2 {
+    background-image: url(./assets/section1/imgs/jumparena.jpg);
+}
+
+.slide-3 {
+    background-image: url(./assets/section1/imgs/virtual-reality.jpg);
+}
+
+.slide-4 {
+    background-image: url(./assets/section1/imgs/multiball.jpg);
+}
+
+.slide-5 {
+    background-image: url(./assets/section1/imgs/shooting-range.jpg);
+}
+
+.section2-subtract {
+    background-image: url(./assets/section2/icons/step.png);
+    background-repeat: no-repeat;
+    height: 50px;
+    width: 67px;
+    text-align: center;
+}
+
+
+.section2-subtract span {
+    color: #009FE3;
+    font-weight: 700;
+    font-size: 72px;
+    line-height: 50px;
+}
+
+.section2-content {
+    background-image: url(./assets/section2/icons/content.png);
+}
+
+.section2-content h3 {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 64px;
+}
+
+.section3-content h1 {
+    line-height: 100%;
+}
+
+.section3-video {
+    background-image: url(./assets/section3/imgs/bg.png);
+    border-radius: 24px;
+}
+
+.section3-video img {
+    z-index: 1;
+}
+
+.section3-video::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/section3/imgs/texture.png');
+    background-position: center;
+    border-radius: 24px;
+    opacity: 0.5;
+    z-index: 0;
+}
+
+.more-info {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.gifting {
+    background-color: #E30613;
+    border-radius: 24px;
+}
+
+.gifting img {
+    z-index: 1;
+}
+
+.gifting button {
+    z-index: 1;
+}
+
+.gifting::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/section5/texture.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.footer {
+    font-size: 14px;
+}
+
+.footer-contact span{
+    background-color: #292929;
+    border-radius: 300px;
+}
+
+.footer-contact img {
+    width: 32px;
+}
