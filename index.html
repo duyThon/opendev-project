@@ -3,18 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue CDN Example</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Opendev CSS testing project</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.min.js"></script>
 
     <!-- frameworks -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollToPlugin.min.js"></script>
 
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,700&display=swap"
       rel="stylesheet"
     />
     <link
@@ -22,10 +23,13 @@
       rel="stylesheet"
     />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lexend:wght@600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lexend:wght@700&display=swap"
       rel="stylesheet"
     />
-    <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Big+Shoulders:opsz,wght@10..72,100..900&display=swap"
+      rel="stylesheet"
+    />
 
     <!-- SwiperJS -->
     <link
@@ -37,165 +41,531 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <body style="background-color: #191919;" class="overflow-x-hidden">
-
+    <body class="overflow-x-hidden">
       <div id="app">
         <!-- navbar -->
-        <div ref="navbar" class="navbar px-6 md:px-16 lg:px-[46px] py-[20px] transition-all duration-100" :style="{ backgroundColor: isScrollingUp ? 'rgba(25,25,25,0.5)' : 'transparent' }">
-            <div class="grid grid-cols-2 md:grid-cols-12 items-center">
-              <div class="navbar-logo col-span-1 md:col-span-4 lg:col-span-2 flex justify-start">
-                <img class="h-[40px]" src="./assets/icons/navbar/logo.png" />
-              </div>
-              <div class="hidden md:block md:col-span-4 lg:col-span-8"></div>
-              <div class="extensions col-span-1 md:col-span-4 lg:col-span-2 flex justify-end items-center space-x-[32px]">
-                <img class="h-[28px]" src="./assets/icons/navbar/multi-langs.png" />
-                <img class="h-[48px]" src="./assets/icons/navbar/menu.png" />
-              </div>
+        <div
+          ref="navbar"
+          class="navbar px-6 md:px-16 lg:px-[46px] py-[15px] transition-all duration-100"
+          :style="{ backgroundColor: isScrollingUp ? 'rgba(25,25,25,0.5)' : 'transparent' }"
+        >
+          <div class="grid grid-cols-2 md:grid-cols-12 items-center">
+            <div
+              class="navbar-logo col-span-1 md:col-span-4 lg:col-span-2 flex justify-start"
+            >
+              <img class="h-[30px] md:h-[40px]" src="./assets/icons/navbar/logo.png" />
             </div>
+            <div class="hidden md:block md:col-span-4 lg:col-span-8"></div>
+            <div
+              class="extensions col-span-1 md:col-span-4 lg:col-span-2 flex justify-end items-center space-x-[20px] md:space-x-[32px]"
+            >
+              <img
+                class="h-[20px] md:h-[28px]"
+                src="./assets/icons/navbar/multi-langs.png"
+              />
+              <img class="h-[24px] md:h-[48px]" src="./assets/icons/navbar/menu.png" />
+            </div>
+          </div>
         </div>
+
         <!-- section1 -->
-        <div class="section1 space-y-24 swiper mySwiper w-full">
+        <div class="section-1 swiper mySwiper w-full relative">
           <div class="swiper-wrapper">
-            <!-- Slide 1 -->
             <div
-              class="slide-1 bg-img swiper-slide"
+              class="slide bg-img swiper-slide flex flex-wrap justify-between items-end"
+              v-for="(slide, index) in slides"
+              :key="index"
+              :style="{ backgroundImage: `url(${slide.background})` }"
             >
-            <div class="gradient-overlay"></div>
-            </div>
-            <!-- Slide 2 -->
-            <div
-              class="slide-2 bg-img swiper-slide"
-            >
-            <div class="gradient-overlay"></div>
-            </div>
-            <!-- Slide 3 -->
-            <div
-              class="slide-3 bg-img swiper-slide"
-            >
-            <div class="gradient-overlay"></div>
-            </div>
-            <!-- Slide 4 -->
-            <div
-              class="slide-4 bg-img swiper-slide"
-            >
-            <div class="gradient-overlay"></div>
-            </div>
-            <!-- Slide 5 -->
-            <div
-              class="slide-5 bg-img swiper-slide"
-            >
-            <div class="gradient-overlay"></div>
+              <div class="slide-left-content
+                absolute top-[88px] bg-[#00000050] py-[20px]
+                lg:relative lg:top-0 lg:ml-[48px] lg:mb-[90px] lg:bg-[#00000000] py-0">
+                <h1
+                  style="line-height: 100%"
+                  class="text big-shoulders-stencil-text 
+                    text-[60px] text-center
+                    lg:text-start lg:text-[120px] lg:pb-[24px]"
+                >
+                  {{slide.title.toUpperCase()}}
+                </h1>
+                <div class="flex 
+                  flex-col justify-center px-[12px]
+                  lg:flex-row lg:justify-start lg:items-end lg:px-0 lg:space-x-[12px]">
+                  <p
+                    class="text space-text lg:text-[14px] left-desc lg:w-[347px]"
+                  >
+                    {{slide.description}}
+                  </p>
+                  <button
+                    class="find-out relative grid place-items-center mt-[20px] lg:mt-0"
+                    style="height: 100%"
+                  >
+                    <img
+                      class="object-cover"
+                      src="./assets/section1/icons/subtract.png"
+                     
+                    />
+                    <p class="absolute text space-text">Find out more</p>
+                  </button>
+                </div>
+              </div>
+              <div class="gradient-overlay"></div>
             </div>
           </div>
           <!-- Pagination & Navigation -->
-          <div class="swiper-pagination"></div>
+          <div
+            class="hidden md:block md:text-center lg:text-start swiper-pagination absolute lg:ml-[48px]"
+            style="bottom: 50px"
+          ></div>
+        </div>
+
+        <div style="z-index: 10;" ref="bouncing" class="absolute top-[650px] lg:top[600px] reserve-btn left-1/2 -translate-x-1/2">
+          <img src="./assets/section1/icons/button.png">
+          <div
+            class="section1-reserve-btn-f-gradient absolute z-[-1]"
+          ></div>
+          <div
+            class="section1-reserve-btn-s-gradient absolute z-[-1]"
+          ></div>
+        </div>
+
+        <div
+          class="slide-right-content absolute flex flex-col content-between
+            top-[400px] lg:top-[350px]
+            
+            lg:top-[520px] lg:right-0 lg:mr-[48px] lg:mb-[50px] lg:w-[384px] lg:h-[174px]"
+        >
+          <div class="flex relative">
+            <img
+              src="./assets/section1/icons/flag.png"
+              class=" absolute -translate-y-1/2
+                w-[100px] -top-[20px] -left-[22px]
+                md:w-[100px] -md:top-[2px]
+                lg:w-[87px] lg:-left-[17px] lg:top-[2px]"
+             
+            />
+            <h2
+              class="text big-shoulders-text 
+                text-center text-[40px]
+                lg:text-[32px] flex-1 lg:pt-[8px] lg:pr-[16px] lg:text-end"
+            >
+              Everyday fun for everyone
+            </h2>
+          </div>
+          <div
+            class="text space-text
+              px-[20px]
+              p-auto lg:text-[14px] lg:pr-[16px] lg:pl-[14px] lg:pb-[20px]"
+          >
+            A few kilometers from Cheb, we have built a new entertainment centre
+            <span
+              class="bg-gradient-to-r from-blue-500 via-white to-red-500 bg-clip-text text-transparent font-semibold"
+            >
+              FUN Arena Cheb
+            </span>
+            for you. You will find entertainment and sports activities for
+            children and adults here.
+          </div>
+          
+        <div style="z-index: 10;" class="phone-numb-wrapper absolute
+          left-1/2 -translate-x-1/2 -bottom-[50px]
+          
+          md:left-1/2 md:-translate-x-1/2
+          lg:left-auto lg:translate-x-1/2 lg:bottom-0 lg:right-[100px]">
+          <div
+            class="phone-numb flex justify-center items-center"
+          >
+            <h3 class="lexend-text lg:py-[9px] lg:pl-[12px] lg:pr-[10px]">
+              +420737878891
+            </h3>
+            <img
+              class="m-[4px] w-[30px]"
+              src="./assets/section1/icons/phone.png"
+            
+            />
+          </div>
+        </div>
+          <div
+            class="section1-f-gradient absolute left-[91px] bottom-[95px] w-[100px] h-[100px] z-[-1]"
+          ></div>
+          <div
+            class="section1-s-gradient absolute right-[51px] -top-[3px] w-[168px] h-[168px] z-[-1]"
+          ></div>
         </div>
 
         <!-- section2 -->
-        <div class="section-2 py-[20px] md:py-[50px] lg:py-[100px] w-screen">
-          <div class="section2-container relative py-[20px] md:py-[50px] lg:py-[100px] px-[29px] md:px-[58px] lg:px-[116px] grid grid-cols-12">
-            <div class="col-span-12 justify-start md:col-span-6 lg:col-span-6">
-              <div class="registration w-3/5 lg:w-[566px]">
-                <h1 class="mb-[8px] md:mb-[16px] lg:mb-[32px] text big-shoulders-text section-title">REGISTRATION</h1>
-                <p class="text space-text">For organizational and security reasons, every visitor to the FUN arena Cheb must register before entering the attraction. At the reception, your registration will be completed and you will receive a loyalty card which you will use for our services.</p>
-        
+        <div class="section-2 py-[50px] md:py-[50px] lg:py-[100px] w-screen">
+          <div
+            class="section2-container relative py-[50px] md:py-[50px] lg:py-[100px] px-[29px] md:px-[58px] lg:px-[116px] grid grid-cols-12"
+          >
+            <div class="col-span-12 justify-start lg:col-span-6">
+              <div class="registration
+              text-center
+              lg:w-3/5 lg:w-[566px] lg:text-start">
+                <h1
+                  class="text big-shoulders-text section-title mb-[8px]
+                    text-[40px]
+                    md:text-[72px] md:mb-[16px] lg:mb-[32px]"
+                >
+                  REGISTRATION
+                </h1>
+                <p class="text space-text">
+                  For organizational and security reasons, every visitor to the
+                  FUN arena Cheb must register before entering the attraction.
+                  At the reception, your registration will be completed and you
+                  will receive a loyalty card which you will use for our
+                  services.
+                </p>
               </div>
             </div>
-            <div class="col-span-12 justify-start md:col-span-6 lg:col-span-6">
+            <div class="col-span-12 justify-start lg:col-span-6">
               <div class="section2-steps">
-                <div class="section2-step flex items-end">
-                  <div class="section2-subtract">
-                    <span class="space-text">1</span>
+                <div v-for="(item, index) in steps" :key="item.step">
+                  <div class="section2-step flex items-end space-y-[48px]">
+                    <div class="section2-subtract bg-contain">
+                      <div><h3 class="space-text
+                            text-[40px] leading-[70%] 
+                            md:leading-[50px] md:text-[72px]
+                            ">{{item.step}}
+                          </h3>
+                      </div>
+                    </div>
+                    <div
+                      class="section2-content w-[609px] bg-img bg-contain flex items-center"
+                    >
+                      <h3 class="space-text text-[#D9D9D9] 
+                        mx-[20px] my-[10px] text-[20px] p-[10px]
+                        md:text-[24px] md:leading-[64px] md:px-8 md:py-0 md:m-0">
+                        {{item.title}}
+                      </h3>
+                      <div v-if="item.qr" class="register-btn-qr ml-0 md:ml-[185px]">
+                        <p
+                          class="text space-text text-[14px] 
+                          py-[1px] px-[6px]
+                          md:py-[4px] md:px-[9.5px]"
+                        >
+                          Click here
+                        </p>
+                        <img
+                          src="./assets/section2/icons/qr.png"
+                          class="
+                            w-[64px] top-0 right-0
+                            lg:w-[128px] absolute lg:top-[14px] lg:right-[15px]"
+                         
+                        />
+                      </div>
+                    </div>
                   </div>
-                  <div class="section2-content w-[609px] bg-img">
-                    <h3 class="space-text text-[#D9D9D9] px-8">Choose an Attraction</h3>
-                  </div>
+                  <p
+                    style="line-height: 150%"
+                    class="text space-text step-decs 
+                      px-[25px]
+                      md:pl-[100px] md:px-0 md:pt-[8px]"
+                    :class="item.qr ? 'md:pr-[171px]' : 'md:pr-[100px]'"
+                  >
+                    {{item.description}}
+                  </p>
                 </div>
-                <p class="text space-text step-decs">Choose from the attractions of the FUN arena.</p>
+              </div>
             </div>
-            </div>
-            <div class="floating-logo absolute -bottom-full">
-              <img class="w-[156px] lg:pl-[46px]" src="./assets/section2/icons/logo.png" alt="">
+            <div class="floating-logo opacity-50 lg:opacity-100 -z-[1] hidden md:block absolute -bottom-[50%]">
+              <img
+                class="h-[716px] lg:pl-[46px]"
+                src="./assets/section2/icons/logo.png"
+               
+              />
             </div>
           </div>
         </div>
 
         <!-- section3 -->
-        <div class="section3 py-[20px] md:py-[50px] lg:py-[100px] w-screen">
-          <div class="section3-container px-[29px] md:px-[58px] lg:px-[116px] py-[20px] md:py-[50px] lg:py-[100px]">
+        <div class="section-3 w-screen">
+          <div
+            class="section3-container px-[29px] md:px-[58px] lg:px-[116px] py-[20px] md:py-[50px] lg:py-[100px]"
+          >
             <div class="grid grid-cols-12">
-              <div class="hidden md:block lg:col-span-2"></div>
-              <div class="col-span-1 md:col-span-10 lg:col-span-10 flex justify-start items-end">
-                <div class="section3-content">
-                  <h1 class="text big-shoulders-text section-title">NEW ENTERTAINMENT</h1>
-                  <h1 class="mb-[8px] md:mb-[16px] lg:mb-[32px] text big-shoulders-text section-title">CENTER NEAR CHEB</h1>
-                  <p class="text space-text w-[365px]">We have been entertaining children and adults in western Bohemia for more than 10 years!</p>
+              <div class="hidden lg:block lg:col-span-2"></div>
+              <div
+                class="col-span-12 md:col-span-12 lg:col-span-10 flex justify-start items-end grid grid-cols-12"
+              >
+                <div class="section3-content
+                  col-span-12 text-center
+                  lg:col-span-6 lg:text-start">
+                  <h1 class="text big-shoulders-text section-title
+                    text-[40px]
+                    md:text-[72px]">
+                    NEW ENTERTAINMENT
+                  </h1>
+                  <h1
+                    class="text big-shoulders-text section-title
+                    mb-[8px] text-[40px]
+                    md:text-[72px] md:mb-[16px] lg:mb-[32px] "
+                  >
+                    CENTER NEAR CHEB
+                  </h1>
+                  <p class="text space-text lg:w-[365px]">
+                    We have been entertaining children and adults in western
+                    Bohemia for more than 10 years!
+                  </p>
                 </div>
-                <div class="more-info">
+                <div class="more-info
+                col-span-12 mt-[20px]
+                lg:col-span-6 space-x-[12px] md:[m-0]">
                   <p class="text space-text">Find more about us</p>
-                  <img class="w-[24px]" src="./assets/section3/icons/arrow.png" alt="">
+                  <img
+                    class="w-[24px]"
+                    src="./assets/section3/icons/arrow.png"
+                   
+                  />
                 </div>
               </div>
             </div>
-            <div class="mt-[48px]">
-              <div class="section3-video relative h-[567px] w-[1280px] flex justify-center items-center">
-                <img src="./assets/section3/icons/play.png" class="w-[80px]" alt="">
+            <div class="mt-[20px] md:mt-[48px]">
+              <div
+                class="section3-video relative h-[300px] md:h-[567px] w-full flex justify-center items-center"
+              >
+                <img
+                  src="./assets/section3/icons/play.png"
+                  class="w-[80px] cursor-pointer"
+                 
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- section4 -->
+        <div class="section-4 w-screen">
+          <div
+            class="section4-container px-[29px] md:px-[58px] lg:px-[116px] py-[20px] md:py-[50px] lg:py-[100px]"
+          >
+            <div
+              class="section4-heading-decs flex justify-between items-center grid grid-cols-12
+              md:mb-[48px]"
+            >
+              <h1 class="text big-shoulders-text section-title 
+              col-span-12 text-center text-[40px]
+              md:text-[72px] lg:col-span-6">
+                OUR ATTRACTIONS
+              </h1>
+              <div class="section4-desc flex justify-end items-center
+              col-span-12 my-[20px] 
+              lg:col-span-6 md:m-0">
+                <p class="text space-text pr-[24px]">
+                  Multiple activities at Fun Arena Cheb
+                </p>
+                <img
+                  src="./assets/section4/icons/arrows.png"
+                  class="h-[12px] md:h-[16px]"
+                 
+                />
+              </div>
+            </div>
+            <div class="section4-main grid grid-cols-12 flex items-center">
+              <div
+                class="left-content space-y-3 col-span-12 justify-center md:col-span-5 lg:col-span-5 mb-[50px] md:mb-0"
+              >
+                <div
+                  v-for="(item, index) in attractions"
+                  :key="index"
+                  @click="selectedIndex = index"
+                  class="attractions cursor-pointer transition-all duration-300 relative overflow-hidden
+                  mr-0
+                  h-[64px] md:mr-[40px]"
+                  :class="selectedIndex === index ? 'left-0 right-0 active-attractions' : 'bg-[#d9d9d9]'"
+                >
+                  <div
+                    class="attractions-wrapper h-[65px] md:h-[99px] left-[-20px] relative w-1/2 flex justify-end"
+                  >
+                    <img
+                      :src="item.url"
+                     
+                      class="attractions-img absolute top-1/2 -translate-y-1/2 w-full h-auto object-contain"
+                    />
+                    <div
+                      class="absolute inset-0 right-[-1px]"
+                      :style=" selectedIndex === index 
+                        ? 'background: linear-gradient(90deg, rgba(41, 41, 41, 0.2) 0%, #292929 100%);'
+                        : 'background: linear-gradient(90deg, rgba(41, 41, 41, 0.2) 0%, #d9d9d9 100%);'"
+                    ></div>
+                  </div>
+                  <div
+                    class="attractions-wrapper absolute inset-0 flex items-center justify-end pr-4 z-10"
+                  >
+                    <h3
+                      syle="line-height: 100%;"
+                      class="big-shoulders-text text-[32px] md:text-[28px] lg:text-[32px] py-[13px] hover:scale-[1.1]"
+                      :class="selectedIndex === index ? 'text lg:pr-[40px]' : 'text-[#292929] lg:pr-[60px]'"
+                    >
+                      {{ item.title }}
+                    </h3>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="right-content col-span-12 md:col-span-7 lg:col-span-7 relative"
+              >
+                <div class="wrapper w-full h-full flex justify-end">
+                  <div
+                    v-if="selectedAttraction"
+                    class="relative section4-img w-[780px] h-[250px] md:h-[518px]"
+                  >
+                    <img
+                      :src="selectedAttraction.url"
+                      class="h-[249px] md:h-[517px] w-[780px] -scale-x-100"
+                    />
+                    <div
+                      class="absolute bottom-0 left-0 section4-gradient"
+                    ></div>
+                    <div
+                      style="z-index: 2"
+                      class="absolute 
+                      top-[20px] w-full
+                      lg:bottom-0 lg:top-auto lg:ml-[33px] lg:mb-[24px] lg:w-[367px]"
+                    >
+                      <p class="text space-text text-center lg:text-start">
+                        {{ selectedAttraction.description }}
+                      </p>
+                    </div>
+                  </div>
+                  <div
+                    style="z-index: 2"
+                    class="right-content-button absolute right-0 bottom-0"
+                  >
+                    <div class="button-wrapper">
+                      <button
+                        class="bg-[#D9D9D9] rounded-[24px] mt-[7px] ml-[7px]"
+                      >
+                        <div class="space-text font-[700] mx-[24px] my-[12px]">
+                          Find out more
+                        </div>
+                      </button>
+                      <div class="curve"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
         <!-- section5 -->
 
-        <div class="section-5 px-[20px] md:px-[150px] lg:px-[256px] py-[20px] md:py-[50px] lg:py-[100px] w-screen">
+        <div
+          class="section-5 px-[20px] md:px-[58px] lg:px-[256px] py-[20px] md:py-[50px] lg:py-[100px] w-screen"
+        >
           <div class="gifting relative flex justify-center items-center">
-            <img class="w-[220px] absolute left-0" src="./assets/section5/gift.png" alt="">
-            <div style="z-index: 1;" class="py-[24px] flex-1 pl-[227px] pr-[105px]">
-              <h3 class="font-[500] text-[32px] text">Make somebody happy with a gift voucher</h3>
-              <p class="text space-text">The voucher is valid for all services. Unforgettable experiences for children and adults!</p>
+            <img
+              class="absolute 
+              -left-[20px] w-[70px] top-[10px]
+              md:w-[110px] md:-top-[70px]
+              lg:left-0 lg:w-[220px] lg:top-auto"
+              src="./assets/section5/gift.png"
+             
+            />
+            <div
+              style="z-index: 1"
+              class="px-[20px] md:py-[24px] md:px-[70px] flex-1 lg:pl-[227px] lg:pr-[105px]"
+            >
+              <h3 class="font-[500] text 
+              uppercase text-[20px] text-center p-[10px]
+              md:text-[32px] md:normal-case md:text-start md:p-0">
+                Make somebody happy with a gift voucher
+              </h3>
+              <p class="text space-text ">
+                The voucher is valid for all services. Unforgettable experiences
+                for children and adults!
+              </p>
             </div>
-            <button class="absolute right-0 bg-white right-0 translate-x-1/2 rounded-[12px]"><p class="text-[#292929] space-text px-[24px] py-[12px] font-[700]">Buy now</p></button>
+            <button
+              class="absolute bg-white translate-x-1/2 rounded-[12px]
+              right-[50px] bottom-[-10px]
+              md:-bottom-[10%] md:right-[80px]
+              lg:bottom-[25%] lg:right-0"
+            >
+              <p
+                class="text-[#292929] space-text text-[14px] px-[8px] py-[4px] md:px-[24px] md:py-[12px] font-[700]"
+              >
+                Buy now
+              </p>
+            </button>
           </div>
         </div>
 
         <!-- footer -->
-        <div style="border-top: 1px solid #292929;" class="footer px-6 md:px-16 lg:px-[116px] py-20">
-          <div class="footer-first grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3">
-            <div class="flex justify-center md:justify-start lg:justify-start items-center">
-              <img src="./assets/footer/logo.png" alt="">
+        <div
+          style="border-top: 1px solid #292929"
+          class="footer px-6 md:px-16 lg:px-[116px] py-20"
+        >
+          <div
+            class="footer-first grid grid-cols-1 space-y-6 md:space-y-0 md:grid-cols-3 lg:grid-cols-3"
+          >
+            <div
+              class="flex justify-center md:justify-start lg:justify-start items-center"
+            >
+              <img src="./assets/footer/logo.png" />
             </div>
             <div class="flex justify-center items-center">
-              <p class="text space-text w-[300px] text-start">New entertainment centre FUN arena Cheb. You will find entertainment and sports activities for children and adults here.</p>
+              <p class="text space-text w-[300px] text-start">
+                New entertainment centre FUN arena Cheb. You will find
+                entertainment and sports activities for children and adults
+                here.
+              </p>
             </div>
-            <div class="flex flex-col md:items-end lg:items-end space-y-[10px] items-center">
+            <div
+              class="flex flex-col md:items-end lg:items-end space-y-[10px] items-center"
+            >
               <div class="text space-text">Potočiště 3, 350 02 Odrava</div>
               <div class="text space-text">fun@funarenacheb.cz</div>
               <div class="text space-text">+420737878891</div>
+            </div>
           </div>
-          </div>
-          <div class="footer-last grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 py-6">
-            <div class="footer-contact flex justify-center md:justify-start lg:justify-start items-center">
+          <div
+            class="footer-last grid grid-cols-1 space-y-6 md:space-y-0 md:grid-cols-3 lg:grid-cols-3 py-6"
+          >
+            <div
+              class="footer-contact flex justify-center md:justify-start lg:justify-start items-center"
+            >
               <span class="flex items-center px-3 py-2 space-x-3">
-                <img class="flex items-center " src="./assets/footer/fb.png" alt="">
-                <img class="flex items-center " src="./assets/footer/ins.png" alt="">
-                <img class="flex items-center " src="./assets/footer/mail.png" alt="">
-                <img class="flex items-center " src="./assets/footer/phone.png" alt="">
+                <img
+                  class="flex items-center curso"
+                  src="./assets/footer/fb.png"
+                 
+                />
+                <img
+                  class="flex items-center"
+                  src="./assets/footer/ins.png"
+                 
+                />
+                <img
+                  class="flex items-center"
+                  src="./assets/footer/mail.png"
+                 
+                />
+                <img
+                  class="flex items-center"
+                  src="./assets/footer/phone.png"
+                 
+                />
               </span>
             </div>
-            <div class="copy-right gap-6 flex justify-center md:justify-end lg:justify-end items-center md:col-span-2 lg:col-span-2">
-              <p class="text space-text">© 2025 FUN Arena Cheb. All rights Reserved.</p>
-              <img class="w-10 h-10 ml-4" src="./assets/footer/arrow-up.png" alt="">
+            <div
+              class="copy-right gap-6 flex justify-center md:justify-end lg:justify-end items-center md:col-span-2 lg:col-span-2"
+            >
+              <p class="text space-text">
+                © 2025 FUN Arena Cheb. All rights Reserved.
+              </p>
+              <img
+                @click="scrollToTop"
+                class="w-10 h-10 ml-4 cursor-pointer"
+                src="./assets/footer/arrow-up.png"
+               
+              />
             </div>
-        </div>
+          </div>
         </div>
       </div>
     </body>
     <script src="script.js"></script>
-    <script>
-      const swiper = new Swiper(".mySwiper", {
-        loop: true,
-        autoplay: { delay: 50000 },
-        pagination: { el: ".swiper-pagination", clickable: true },
-      });
-    </script>
   </body>
 </html>

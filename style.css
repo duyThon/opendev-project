@@ -1,5 +1,5 @@
 body {
-    /* background-color: #191919; */
+    background-color: #191919;
 }
 
 ::-webkit-scrollbar {
@@ -21,9 +21,18 @@ body {
     font-family: "Big Shoulders", sans-serif;
 }
 
+.big-shoulders-stencil-text {
+    font-family: "Big Shoulders Stencil", sans-serif;
+    font-weight: 700;
+}
+
+.lexend-text {
+    font-family: "Lexend", sans-serif;
+    font-weight: 700;
+}
+
 .section-title {
     font-weight: 700;
-    font-size: 72px;
 }
 
 .navbar {
@@ -33,8 +42,8 @@ body {
 }
 
 
-.section1 {
-    height: 100vh;
+.section-1 {
+    height: 720px;
     background: rgb(25,25,25);
 }
 
@@ -46,34 +55,84 @@ body {
     z-index: 2;
 }
 
+.slide-left-content {
+    z-index: 2;
+
+}
+
+.find-out:hover p {
+    transition: all 0.3s ease;
+    transform: scale(1.1);
+}
+
+.swiper-pagination {
+    position: absolute;
+    text-align: start;
+}
+
+.swiper-pagination-bullet {
+    background: url('./assets/section1/icons/pagination/unactive.png') no-repeat center;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+    transition: all 0.3s;
+}
+
+.swiper-pagination-bullet-active {
+    background: url('./assets/section1/icons/pagination/active.png') no-repeat center;
+    background-size: cover;
+    width: 12px;
+    height: 12px;
+    transform: scale(1.1);
+}
+
+.slide-right-content {
+    background: #29292999;
+    border-radius: 24px;
+    z-index: 2;
+}
+
+.phone-numb {
+    background: #D9D9D9;
+    border-radius: 50px;
+}
+
 .gradient-overlay {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(0deg, rgba(25,25,25,1) 5%, rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(180deg, rgba(25, 25, 25, 0) 52.85%, #191919 100%);
     z-index: 1;
 }
 
-.slide-1 {
-    background-image: url(./assets/section1/imgs/go-kart.jpg);
+.section1-f-gradient {
+    background: radial-gradient(50% 50% at 50% 50%, #E30613 0%, #009FE3 100%);
+    filter: blur(100px)
 }
 
-.slide-2 {
-    background-image: url(./assets/section1/imgs/jumparena.jpg);
+.section1-s-gradient {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 159, 227, 0.5) 0%, rgba(227, 6, 19, 0.5) 100%);
+    filter: blur(100px)
 }
 
-.slide-3 {
-    background-image: url(./assets/section1/imgs/virtual-reality.jpg);
+.section1-reserve-btn-f-gradient {
+    background: radial-gradient(50% 50% at 50% 50%, #E30613 0%, #009FE3 100%);
+    filter: blur(100px);
+    width: 100px;
+    height: 100px;
+    top: -52px;
+    left: 18px;
 }
 
-.slide-4 {
-    background-image: url(./assets/section1/imgs/multiball.jpg);
-}
-
-.slide-5 {
-    background-image: url(./assets/section1/imgs/shooting-range.jpg);
+.section1-reserve-btn-s-gradient {
+    background: radial-gradient(50% 50% at 50% 50%, rgba(0, 159, 227, 0.5) 0%, rgba(227, 6, 19, 0.5) 100%);
+    filter: blur(100px);
+    width: 168px;
+    height: 168px;
+    top: -45px;
+    left: 90px;
 }
 
 .section2-subtract {
@@ -85,21 +144,22 @@ body {
 }
 
 
-.section2-subtract span {
+.section2-subtract h3 {
     color: #009FE3;
     font-weight: 700;
-    font-size: 72px;
-    line-height: 50px;
 }
 
 .section2-content {
     background-image: url(./assets/section2/icons/content.png);
 }
 
+.register-btn-qr {
+    background: #E30613;
+    border-radius: 8px;
+}
+
 .section2-content h3 {
     font-weight: 700;
-    font-size: 24px;
-    line-height: 64px;
 }
 
 .section3-content h1 {
@@ -109,6 +169,9 @@ body {
 .section3-video {
     background-image: url(./assets/section3/imgs/bg.png);
     border-radius: 24px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .section3-video img {
@@ -130,6 +193,112 @@ body {
     display: flex;
     flex: 1;
     justify-content: flex-end;
+}
+
+.attractions {
+    border-radius: 8px;
+    transform: skewX(-25.25deg);
+}
+
+.attractions-wrapper {
+    transform: skewX(25.25deg); 
+}
+
+.attractions-overlay {
+    background: linear-gradient(90deg, rgba(217, 217, 217, 0.2) 20%, #D9D9D9 100%);
+}
+
+.active-attractions {
+    border-radius: 8px;
+    transform: skewX(-25.25deg);
+    background: #292929;
+}
+
+.attractions-curve {
+    background-color: #292929;
+}
+
+.wrapper {
+    background-color: #191919;
+    z-index: -1;
+}
+
+.section4-img {
+    border-radius: 24px;
+    background-position: center;
+    background-size: cover;
+}
+
+.section4-img::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url('./assets/section4/imgs/texture.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 24px;
+    opacity: 0.2;
+    z-index: 0;
+}
+
+.section4-img img{
+    border-radius: 24px;
+}
+
+.section4-gradient {
+    background: linear-gradient(338.19deg, #292929 7.74%, rgba(41, 41, 41, 0) 67.2%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.button-wrapper {
+    background-color: #191919;
+    border-top-left-radius: 25px 25px;
+}
+
+.button-wrapper:hover div {
+    transform: scale(1.01);
+}
+
+.curve {
+    background-color: transparent;
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: -20px;
+    right: 100px;
+    bottom: 0;
+    z-index: 4;
+}
+
+.curve::after {
+    background-color: rgb(255 255 255 / 0%);
+    content: '';
+    position: absolute;
+    border-bottom-right-radius: 25px 25px;
+    box-shadow: 5px 8px 0px 1px rgb(25 25 25);
+    width: 27px;
+    height: 32px;
+    top: 3px;
+    left: -7px;
+    z-index: 4;
+}
+
+.curve::before {
+    background-color: rgb(255 255 255 / 0%);
+    content: '';
+    position: absolute;
+    border-bottom-right-radius: 24px 24px;
+    box-shadow: 8px 2px 0px 1px rgb(25 25 25);
+    width: 36px;
+    height: 15px;
+    top: -35px;
+    right: -100px;
+    z-index: 4;
 }
 
 .gifting {
@@ -168,4 +337,12 @@ body {
 
 .footer-contact img {
     width: 32px;
+    border-radius: 50%;
+    cursor: pointer;
 }
+
+.footer-contact img:hover {
+    transform: scale(1.2);
+    background-color: #ffffff50;
+}
+
